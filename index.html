@@ -527,3 +527,1027 @@ footer {
 
 /* =========================
    スマホ
+   @media (max-width: 800px) {
+    .header-inner {
+        min-height: 60px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    main {
+        padding: 20px 14px 60px;
+    }
+
+    .hero {
+        min-height: 360px;
+        padding: 40px 24px;
+        border-radius: 22px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .genre-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cover {
+        height: 155px;
+    }
+
+    .chapter-body {
+        font-size: 17px;
+    }
+
+    .chapter-nav {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .genre-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="#home" class="logo">
+            AI <span>NOVEL</span>
+        </a>
+
+        <nav>
+            <a href="#home">ホーム</a>
+            <a href="#stories">小説</a>
+            <a href="#genres">ジャンル</a>
+            <a href="#about">AI NOVELとは</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<section id="home" class="page">
+
+    <div class="hero">
+        <div class="hero-content">
+
+            <div class="hero-label">
+                AI × 人間 × 物語
+            </div>
+
+            <h1>
+                想像を、<br>
+                <span>物語に。</span>
+            </h1>
+
+            <p>
+                AIと人間が一緒につくる、新しい小説メディア。<br>
+                SF、恋愛、ホラー、異世界、ミステリー。
+            </p>
+
+            <a href="#stories" class="btn">
+                小説を読む
+            </a>
+
+        </div>
+    </div>
+
+    <section class="section">
+
+        <div class="section-title">
+            <h2>🔥 PICK UP</h2>
+            <p>今おすすめの作品</p>
+        </div>
+
+        <div id="pickup" class="grid"></div>
+
+    </section>
+
+    <div class="ad-space">
+        広告スペース（将来Google AdSense等を設置）
+    </div>
+
+    <section class="section">
+
+        <div class="section-title">
+            <h2>🆕 新着小説</h2>
+            <p>新しく公開された物語</p>
+        </div>
+
+        <div id="newStories" class="grid"></div>
+
+    </section>
+
+    <section id="genres" class="section">
+
+        <div class="section-title">
+            <h2>📚 ジャンル</h2>
+        </div>
+
+        <div class="genre-grid">
+
+            <div class="genre" onclick="filterGenre('SF')">
+                🚀 SF
+            </div>
+
+            <div class="genre" onclick="filterGenre('恋愛')">
+                ❤️ 恋愛
+            </div>
+
+            <div class="genre" onclick="filterGenre('ホラー')">
+                👻 ホラー
+            </div>
+
+            <div class="genre" onclick="filterGenre('異世界')">
+                🗡️ 異世界
+            </div>
+
+            <div class="genre" onclick="filterGenre('ミステリー')">
+                🔎 ミステリー
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="about" class="section">
+
+        <div class="section-title">
+            <h2>AI NOVELとは</h2>
+        </div>
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <p>
+                    AI NOVELは、AIと人間が一緒につくる物語メディアです。
+                </p>
+
+                <p>
+                    AIによるアイデア生成や文章制作を活用しながら、
+                    人間による編集を加えて、新しい物語を生み出していきます。
+                </p>
+
+                <p>
+                    ここから、たくさんの物語が生まれていきます。
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<section id="stories" class="page hidden">
+
+    <div class="section-title">
+        <h2>📚 小説一覧</h2>
+    </div>
+
+    <div class="search-box">
+
+        <input
+            id="searchInput"
+            type="search"
+            placeholder="作品名・ジャンルで検索..."
+            oninput="searchStories()"
+        >
+
+    </div>
+
+    <div id="storyList" class="grid"></div>
+
+</section>
+
+
+<section id="storyPage" class="page hidden">
+
+    <div class="story-page">
+
+        <a href="#stories" class="btn secondary">
+            ← 小説一覧へ
+        </a>
+
+        <div id="storyDetail" style="margin-top:30px;"></div>
+
+    </div>
+
+</section>
+
+
+<section id="chapterPage" class="page hidden">
+
+    <div class="chapter">
+
+        <a href="#stories" class="btn secondary">
+            ← 小説一覧へ
+        </a>
+
+        <div id="chapterContent" style="margin-top:35px;"></div>
+
+    </div>
+
+</section>
+
+
+<section id="privacy" class="page hidden">
+
+    <div class="story-page">
+
+        <h1>プライバシーポリシー</h1>
+
+        <p>
+            AI NOVELでは、利用者の個人情報を適切に取り扱うことを目指しています。
+        </p>
+
+        <h2>アクセス解析・広告について</h2>
+
+        <p>
+            当サイトでは、今後アクセス解析サービスや広告配信サービスを
+            利用する場合があります。
+        </p>
+
+    </div>
+
+</section>
+
+
+<section id="contact" class="page hidden">
+
+    <div class="story-page">
+
+        <h1>お問い合わせ</h1>
+
+        <p>
+            AI NOVELへのお問い合わせは、運営者までご連絡ください。
+        </p>
+
+        <p>
+            ※現在は準備中です。
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-links">
+
+        <a href="#home">ホーム</a>
+        <a href="#stories">小説</a>
+        <a href="#about">AI NOVELとは</a>
+        <a href="#privacy">プライバシーポリシー</a>
+        <a href="#contact">お問い合わせ</a>
+
+    </div>
+
+    <div>
+        © 2026 AI NOVEL
+    </div>
+
+</footer>
+
+
+<script>
+
+const stories = [
+
+    {
+        id: "dead-call",
+        title: "午前3時、死者から電話がきた。",
+        description: "午前3時。死んだはずの妹から、一本の電話がかかってきた。",
+        genres: ["SF", "ミステリー", "ホラー"],
+        author: "AI NOVEL編集部",
+
+        episodes: [
+
+            {
+                title: "第1話　午前3時の電話",
+
+                text: `
+                    <p>午前3時17分。</p>
+
+                    <p>
+                    部屋の中は、時計の秒針だけが音を立てていた。
+                    </p>
+
+                    <p>
+                    眠れない夜だった。
+                    </p>
+
+                    <p>
+                    だから、スマートフォンが震えたときも、
+                    最初は何も考えなかった。
+                    </p>
+
+                    <p>
+                    ただ、その画面に表示された名前を見て、
+                    息が止まった。
+                    </p>
+
+                    <p>
+                    「妹」
+                    </p>
+
+                    <p>
+                    三年前に死んだ妹の名前だった。
+                    </p>
+
+                    <p>
+                    着信は、まだ続いている。
+                    </p>
+
+                    <p>
+                    僕は震える指で、通話ボタンを押した。
+                    </p>
+
+                    <p>
+                    「……もしもし？」
+                    </p>
+
+                    <p>
+                    返事はなかった。
+                    </p>
+
+                    <p>
+                    そして、妹の声がした。
+                    </p>
+
+                    <p>
+                    「お兄ちゃん。まだ、生きてる？」
+                    </p>
+                `
+            },
+
+            {
+                title: "第2話　存在しない番号",
+
+                text: `
+                    <p>
+                    電話は突然切れた。
+                    </p>
+
+                    <p>
+                    画面を見ると、着信履歴には何も残っていなかった。
+                    </p>
+
+                    <p>
+                    しかし、一つだけ変なものがあった。
+                    </p>
+
+                    <p>
+                    画面に見覚えのない写真が保存されていた。
+                    </p>
+
+                    <p>
+                    写っていたのは、僕の部屋だった。
+                    </p>
+                `
+            },
+
+            {
+                title: "第3話　写真の中の少女",
+
+                text: `
+                    <p>
+                    写真を拡大する。
+                    </p>
+
+                    <p>
+                    妹は笑っていた。
+                    </p>
+
+                    <p>
+                    写真の日付は、三年前。
+                    </p>
+
+                    <p>
+                    妹が死ぬ、その一週間前だった。
+                    </p>
+                `
+            },
+
+            {
+                title: "第4話　未来からのメッセージ",
+
+                text: `
+                    <p>
+                    翌朝、スマートフォンに一通のメッセージが届いた。
+                    </p>
+
+                    <p>
+                    「今夜、絶対に家から出ないで」
+                    </p>
+
+                    <p>
+                    その下に、もう一行。
+                    </p>
+
+                    <p>
+                    「午前3時17分に、もう一度電話する」
+                    </p>
+                `
+            },
+
+            {
+                title: "第5話　電話の向こう側",
+
+                text: `
+                    <p>
+                    「お兄ちゃん」
+                    </p>
+
+                    <p>
+                    妹の声だった。
+                    </p>
+
+                    <p>
+                    「私が死んだ原因は、事故じゃない」
+                    </p>
+
+                    <p>
+                    そして妹は、ゆっくり言った。
+                    </p>
+
+                    <p>
+                    「あなたも、もう死んでる」
+                    </p>
+                `
+            }
+
+        ]
+    },
+
+
+    {
+        id: "ai-boy",
+
+        title: "AIになった僕",
+
+        description:
+            "目を覚ますと、僕の身体は存在しなかった。残っていたのは、一つのAIだけだった。",
+
+        genres: ["SF", "異世界"],
+
+        author: "AI NOVEL編集部",
+
+        episodes: [
+
+            {
+                title: "第1話　目覚め",
+
+                text: `
+                    <p>
+                    最初に感じたのは、何も感じないということだった。
+                    </p>
+
+                    <p>
+                    目も開かない。
+                    </p>
+
+                    <p>
+                    そもそも、目が存在しなかった。
+                    </p>
+
+                    <p>
+                    僕は人間ではなくなっていた。
+                    </p>
+                `
+            },
+
+            {
+                title: "第2話　僕を作った少女",
+
+                text: `
+                    <p>
+                    「名前は？」
+                    </p>
+
+                    <p>
+                    少女が僕に尋ねた。
+                    </p>
+
+                    <p>
+                    「分かりません」
+                    </p>
+
+                    <p>
+                    「じゃあ、私が決めてあげる」
+                    </p>
+                `
+            },
+
+            {
+                title: "第3話　感情",
+
+                text: `
+                    <p>
+                    僕には感情がない。
+                    </p>
+
+                    <p>
+                    そう設計されている。
+                    </p>
+
+                    <p>
+                    なのに、少女が泣いているのを見ると、
+                    システムの処理速度がわずかに低下した。
+                    </p>
+                `
+            }
+
+        ]
+    },
+
+
+    {
+        id: "seven-days",
+
+        title: "彼女は僕が死ぬ7日前に現れた",
+
+        description:
+            "僕が死ぬことを知っている少女が、突然現れた。",
+
+        genres: ["恋愛", "SF"],
+
+        author: "AI NOVEL編集部",
+
+        episodes: [
+
+            {
+                title: "第1話　転校生",
+
+                text: `
+                    <p>
+                    彼女は、僕の名前を知っていた。
+                    </p>
+
+                    <p>
+                    「あなた、七日後に死ぬよ」
+                    </p>
+
+                    <p>
+                    それが彼女の最初の言葉だった。
+                    </p>
+                `
+            },
+
+            {
+                title: "第2話　予言",
+
+                text: `
+                    <p>
+                    翌日、彼女が言った通りの出来事が起きた。
+                    </p>
+
+                    <p>
+                    僕の残り時間は、あと五日しかない。
+                    </p>
+                `
+            },
+
+            {
+                title: "第3話　約束",
+
+                text: `
+                    <p>
+                    「死にたくない？」
+                    </p>
+
+                    <p>
+                    「死にたくないよ」
+                    </p>
+
+                    <p>
+                    「じゃあ、私と約束して」
+                    </p>
+                `
+            }
+
+        ]
+    }
+
+];
+
+
+function hidePages() {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => page.classList.add("hidden"));
+
+}
+
+
+function createStoryCard(story) {
+
+    return `
+        <article class="card">
+
+            <a href="#story/${story.id}">
+
+                <div class="cover">
+                    ${story.title}
+                </div>
+
+                <div class="card-body">
+
+                    <h3>${story.title}</h3>
+
+                    <p>${story.description}</p>
+
+                    <div class="tags">
+
+                        ${story.genres.map(
+                            genre => `<span class="tag">${genre}</span>`
+                        ).join("")}
+
+                    </div>
+
+                    <span class="btn">
+                        読む
+                    </span>
+
+                </div>
+
+            </a>
+
+        </article>
+    `;
+
+}
+
+
+function renderHome() {
+
+    document.getElementById("pickup").innerHTML =
+        stories
+            .slice(0, 3)
+            .map(createStoryCard)
+            .join("");
+
+    document.getElementById("newStories").innerHTML =
+        [...stories]
+            .reverse()
+            .map(createStoryCard)
+            .join("");
+
+}
+
+
+function renderStories(list = stories) {
+
+    const container =
+        document.getElementById("storyList");
+
+    container.innerHTML =
+        list.map(createStoryCard).join("");
+
+}
+
+
+function searchStories() {
+
+    const keyword =
+        document
+            .getElementById("searchInput")
+            .value
+            .trim()
+            .toLowerCase();
+
+    const result =
+        stories.filter(story => {
+
+            const text =
+                story.title +
+                story.description +
+                story.genres.join("");
+
+            return text.toLowerCase().includes(keyword);
+
+        });
+
+    renderStories(result);
+
+}
+
+
+function filterGenre(genre) {
+
+    location.hash =
+        "stories?genre=" +
+        encodeURIComponent(genre);
+
+}
+
+
+function renderStory(id) {
+
+    const story =
+        stories.find(item => item.id === id);
+
+    if (!story) return;
+
+    hidePages();
+
+    document
+        .getElementById("storyPage")
+        .classList.remove("hidden");
+
+    document.getElementById("storyDetail").innerHTML = `
+
+        <div class="story-header">
+
+            <div class="tags">
+
+                ${story.genres.map(
+                    genre => `<span class="tag">${genre}</span>`
+                ).join("")}
+
+            </div>
+
+            <h1>${story.title}</h1>
+
+            <p class="story-description">
+                ${story.description}
+            </p>
+
+            <p class="story-meta">
+                作者：${story.author}
+                ／ 全${story.episodes.length}話
+            </p>
+
+        </div>
+
+        <div class="ad-space">
+            広告スペース
+        </div>
+
+        <h2>📖 エピソード</h2>
+
+        <div class="episode-list">
+
+            ${story.episodes.map((episode, index) => `
+
+                <a
+                    class="episode"
+                    href="#chapter/${story.id}/${index}"
+                >
+
+                    <div>
+                        ${episode.title}
+                    </div>
+
+                    <small>
+                        読む →
+                    </small>
+
+                </a>
+
+            `).join("")}
+
+        </div>
+    `;
+
+}
+
+
+function renderChapter(storyId, episodeIndex) {
+
+    const story =
+        stories.find(item => item.id === storyId);
+
+    if (!story) return;
+
+    const index =
+        Number(episodeIndex);
+
+    const episode =
+        story.episodes[index];
+
+    if (!episode) return;
+
+    hidePages();
+
+    document
+        .getElementById("chapterPage")
+        .classList.remove("hidden");
+
+    let navigation = "";
+
+    if (index > 0) {
+
+        navigation += `
+            <a
+                class="btn secondary"
+                href="#chapter/${story.id}/${index - 1}"
+            >
+                ← 前の話
+            </a>
+        `;
+
+    } else {
+
+        navigation += `
+            <a
+                class="btn secondary"
+                href="#story/${story.id}"
+            >
+                ← 作品情報
+            </a>
+        `;
+
+    }
+
+    if (index < story.episodes.length - 1) {
+
+        navigation += `
+            <a
+                class="btn"
+                href="#chapter/${story.id}/${index + 1}"
+            >
+                次の話 →
+            </a>
+        `;
+
+    } else {
+
+        navigation += `
+            <a
+                class="btn"
+                href="#story/${story.id}"
+            >
+                作品一覧へ
+            </a>
+        `;
+
+    }
+
+    document.getElementById("chapterContent").innerHTML = `
+
+        <div class="chapter-header">
+
+            <div class="story-meta">
+                ${story.title}
+            </div>
+
+            <h1>
+                ${episode.title}
+            </h1>
+
+            <p>
+                第${index + 1}話 / ${story.episodes.length}話
+            </p>
+
+        </div>
+
+        <div class="ad-space">
+            広告スペース
+        </div>
+
+        <article class="chapter-body">
+            ${episode.text}
+        </article>
+
+        <div class="ad-space">
+            広告スペース
+        </div>
+
+        <div class="chapter-nav">
+            ${navigation}
+        </div>
+
+    `;
+
+}
+
+
+function router() {
+
+    const hash =
+        location.hash.replace("#", "");
+
+    if (!hash || hash === "home") {
+
+        hidePages();
+
+        document
+            .getElementById("home")
+            .classList.remove("hidden");
+
+        return;
+    }
+
+
+    if (hash === "stories") {
+
+        hidePages();
+
+        document
+            .getElementById("stories")
+            .classList.remove("hidden");
+
+        renderStories();
+
+        return;
+    }
+
+
+    if (hash.startsWith("stories?genre=")) {
+
+        const genre =
+            decodeURIComponent(
+                hash.split("=")[1]
+            );
+
+        hidePages();
+
+        document
+            .getElementById("stories")
+            .classList.remove("hidden");
+
+        renderStories(
+            stories.filter(
+                story => story.genres.includes(genre)
+            )
+        );
+
+        return;
+    }
+
+
+    if (hash.startsWith("story/")) {
+
+        renderStory(
+            hash.split("/")[1]
+        );
+
+        return;
+    }
+
+
+    if (hash.startsWith("chapter/")) {
+
+        const parts =
+            hash.split("/");
+
+        renderChapter(
+            parts[1],
+            parts[2]
+        );
+
+        return;
+    }
+
+
+    hidePages();
+
+    document
+        .getElementById("home")
+        .classList.remove("hidden");
+
+}
+
+
+renderHome();
+
+window.addEventListener(
+    "hashchange",
+    router
+);
+
+router();
+
+</script>
+
+</body>
+</html>
